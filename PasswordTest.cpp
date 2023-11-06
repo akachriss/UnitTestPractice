@@ -14,13 +14,23 @@ class PracticeTest : public ::testing::Test
 		virtual void TearDown(){} //clean up after each test, (before destructor)
 };
 
-TEST(PasswordTest, smoke_test)
-{
-    ASSERT_TRUE( 1 == 1 );
-}
 TEST(PasswordTest, single_letter_password)
 {
     Password my_password;
 	int actual = my_password.count_leading_characters("Z");
 	ASSERT_EQ(1,actual);
+}
+
+TEST(PasswordTest, same_letter_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("aaaa");
+	ASSERT_EQ(4, actual);
+}
+
+TEST(PasswordTest, mixed_password)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("aA");
+	ASSERT_EQ(true, actual);
 }

@@ -19,3 +19,27 @@ int Password::count_leading_characters(string phrase){
   }
   return repetition;
 }
+
+bool Password::has_mixed_case(string phrase)
+{
+  bool upper = false;
+  bool lower = false;
+  bool pass = false;
+
+  for(int i = 0; i < phrase.length()-1; i++)
+  {
+    if(isupper(phrase[i]))
+    {
+      upper = true;
+    }
+    if(islower(phrase[i])){
+      lower = true;
+    }
+  }
+
+  if(upper && lower){
+    pass = true;
+  }
+
+  return pass;
+}
