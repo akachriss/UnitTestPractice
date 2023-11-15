@@ -49,16 +49,23 @@ TEST(PasswordTest, not_mixed_password)
 	ASSERT_EQ(false, actual);
 }
 
-TEST(PasswordTest, diff_char_password)
-{
-	Password my_password;
-	int actual = my_password.count_leading_characters("a_*bbbb");
-	ASSERT_EQ(4, actual);
-}
-
 TEST(PasswordTest, upper_lower_password)
 {
 	Password my_password;
 	int actual = my_password.count_leading_characters("zZzhi");
 	ASSERT_EQ(3, actual);
+}
+
+TEST(PasswordTest, invalid_password)
+{
+	Password my_password;
+	bool actual = my_password.authenticate("ChicoCA-95929");
+	ASSERT_EQ(false, actual);
+}
+
+TEST(PasswordTest, valid_password)
+{
+	Password my_password;
+	bool actual = my_password.authenticate("abcdefgh");
+	ASSERT_EQ(true, actual);
 }

@@ -3,6 +3,10 @@
 
 using std::string;
 
+Password::Password(){
+  pass_history.push_back("ChicoCA-95929");
+}
+
 /*
   The function receives a string counts how many times the same character 
   occurs at the beginning of the string, before any other characters (or the
@@ -68,7 +72,7 @@ void Password::set(string phrase)
       bool mixed = has_mixed_case(phrase);
       int lead = count_leading_characters(phrase);
       bool valid = authenticate(phrase);
-      if(!mixed && lead <= 3 && !valid)
+      if(!mixed && lead <= 3 && valid)
       {
         /*
        for(string &str : pass_history)
@@ -89,8 +93,8 @@ bool Password::authenticate(string phrase)
   for(string &str : pass_history)
   {
     if(str == phrase){
-        return true;
+        return false;
     }
   }
-  return false;
+  return true;
 }
